@@ -1,0 +1,6 @@
+Note by <%= note.user.email %>
+<br>
+<%= note.note %>
+<%= button_to "delete note", note_url(note), action: 'delete', method: :delete %>
+<br>
+<br>

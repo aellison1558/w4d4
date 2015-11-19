@@ -1,0 +1,8 @@
+<h4>Add a new note!</h4>
+<form action=<%= notes_url %> method='post'>
+  <%= auth_token %>
+  <textarea name='note[note]'></textarea>
+
+  <input type='hidden' name='note[track_id]' value=<%= track_id %>>
+  <input type='submit' value='create note'>
+</form>
