@@ -1,3 +1,4 @@
-<h1>Albums for <%= @band.name %></h1>
-
+<h1>Albums</h1>
+<h3><%= link_to "Go To Bands", bands_url %></h3>
+<h3><%= link_to "Go to Tracks", tracks_url %></h3>
 <%= render partial: "album", collection: @albums, as: :album %>

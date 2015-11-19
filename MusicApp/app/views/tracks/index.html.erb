@@ -1,3 +1,4 @@
-<h1>Tracks for <%= @album.name %></h1>
-
+<h1>Tracks</h1>
+<h3><%= link_to "Go To Bands", bands_url %></h3>
+<h3><%= link_to "Go to Albums", albums_url %></h3>
 <%= render @tracks %>

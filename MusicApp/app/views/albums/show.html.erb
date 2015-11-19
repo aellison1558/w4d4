@@ -4,7 +4,7 @@
 
 <h3>Tracks:</h3>
 <%= render @tracks %>
-<%= link_to "Add New Track", new_track_url %>
+<%= link_to "Add New Track", new_album_track_url(@album) %>
 
 <p>
   <%= button_to "delete album", album_url(@album), action: 'delete', method: :delete %>

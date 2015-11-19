@@ -1,7 +1,7 @@
 <h1>Bands</h1>
+<h3><%= link_to "Go to Albums", albums_url %></h3>
+<h3><%= link_to "Go to Tracks", tracks_url %></h3>
 
-<%= link_to "Add Band", new_band_url %>
-<%= link_to "Add Album", new_album_url %>
 
 <p>
   <table>
@@ -12,9 +12,9 @@
     <% @bands.each do |band| %>
       <tr>
         <td><%= link_to "#{band.name}", band_url(band) %></td>
-        <td><%= link_to "albums", band_albums_url(band) %></td>
       </tr>
 
     <% end %>
   </table>
+  <%= link_to "Add Band", new_band_url %>
 </p>

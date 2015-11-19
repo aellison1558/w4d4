@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   resources :bands do
-    resources :albums, only: [:index]
+    resources :albums, only: [:new]
   end
 
-  resources :albums, only: [:show, :new, :create, :edit, :update, :destroy] do
-    resources :tracks, only: [:index]
+  resources :albums, only: [:show, :index, :create, :edit, :update, :destroy] do
+    resources :tracks, only: [:new]
   end
 
-  resources :tracks, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :tracks, only: [:show, :index, :create, :edit, :update, :destroy]
 end

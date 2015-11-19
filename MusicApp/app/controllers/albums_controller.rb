@@ -1,8 +1,7 @@
 class AlbumsController < ApplicationController
 
   def index
-    @band = Band.find(params[:band_id])
-    @albums = @band.albums
+    @albums = Album.all
   end
 
   def show
@@ -12,7 +11,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @album = Album.new
+    @album = Album.new(band_id: params[:band_id])
   end
 
   def create
