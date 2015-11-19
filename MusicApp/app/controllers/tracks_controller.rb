@@ -8,6 +8,7 @@ class TracksController < ApplicationController
     @track = Track.find(params[:id])
     @album = @track.album
     @notes = @track.notes
+    @note = Note.new
   end
 
   def new

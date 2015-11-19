@@ -4,8 +4,12 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.user_id = current_user.id
     @track = @note.track
-    @note.save
-    redirect_to track_url(@track)
+    if @note.save
+      redirect_to track_url(@track)
+    else
+      flash[:errors] = @note.errors.full_messages
+      redirect_to track_url(@track)
+    end
   end
 
   def destroy

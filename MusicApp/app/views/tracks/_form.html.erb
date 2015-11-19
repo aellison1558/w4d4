@@ -1,3 +1,4 @@
+<%= render partial: 'shared/errors', locals: {current_object: @track} %>
 
 <form action=<%= current_action %> method='post'>
   <input type='hidden' name='_method' value=<%= current_method %>>
