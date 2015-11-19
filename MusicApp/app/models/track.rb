@@ -17,6 +17,7 @@ class Track < ActiveRecord::Base
   validates :track_type, inclusion: TRACK_TYPES
 
   belongs_to :album
-
   has_one :band, through: :album
+
+  has_many :notes
 end

@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token!
   attr_reader :password
 
+  has_many :notes
+
   def self.generate_session_token
     SecureRandom.base64
   end
