@@ -1,0 +1,7 @@
+<h1>Update Album</h1>
+
+<%= render partial: "form",
+  locals: {
+    current_action: album_url(@album),
+    current_method: 'patch',
+    add_or_update: 'Update Album'} %>

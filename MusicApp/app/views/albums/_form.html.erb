@@ -1,0 +1,37 @@
+
+<form action=<%= current_action %> method='post'>
+  <input type='hidden' name='_method' value=<%= current_method %>>
+  <%= auth_token %>
+
+  <p>
+    <label>Album Name:</label>
+    <input type="string" name='album[name]' value=<%= @album.name %>>
+  </p>
+
+  <p>
+    <label>Band:</label>
+    <select name='album[band_id]' %>>
+      <% Band.all.each do |band| %>
+        <option
+          value=<%= band.id %>
+          <%= 'selected' if @album.band_id == band.id %>
+           ><%= band.name %></option>
+      <% end %>
+    </select>
+  </p>
+
+  <p>
+    <label>Recording Type</label>
+    <br>
+    <label>Studio:</label>
+    <input type="radio" name='album[recording_type]' value='studio' checked>
+    <br>
+    <label>Live:</label>
+    <input type="radio" name='album[recording_type]' value='live'>
+  </p>
+
+  <p>
+    <input type="submit" value=<%= add_or_update %>>
+  </p>
+
+</form>
