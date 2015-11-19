@@ -7,7 +7,7 @@
 <p> <%= h(@track.track_type) %></p>
 
 <h4>Lyrics:</h4>
-<p><%= h(@track.lyrics) %></p>
+<p><%= ugly_lyrics(@track.lyrics) %></p>
 
 <h4>Notes:</h4>
 <%= render @notes %>
