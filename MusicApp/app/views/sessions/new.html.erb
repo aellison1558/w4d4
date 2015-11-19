@@ -4,15 +4,15 @@
   <%= auth_token %>
   <label>Email address:</label>
   <p>
-    <input type="string" name="user[email]" value="<%= @user.email %>">
+    <input type="string" name="login[email]">
   </p>
 
   <label>Password:</label>
   <p>
-    <input type="password" name="user[password]">
+    <input type="password" name="login[password]">
   </p>
 
   <p>
-    <input type="submit" value="Create New User">
+    <input type="submit" value="Log in">
   </p>
 </form>
