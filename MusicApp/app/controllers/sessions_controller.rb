@@ -13,16 +13,16 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout
+    logout!
     redirect_to new_session_url
   end
 
   private
   def email
-    params[:login][:email]
+    params[:user][:email]
   end
 
   def password
-    params[:login][:password]
+    params[:user][:password]
   end
 end
