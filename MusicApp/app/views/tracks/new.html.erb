@@ -1,0 +1,7 @@
+<h1>Add a new Track</h1>
+
+<%= render partial: "form",
+  locals: {
+    current_action: tracks_url,
+    current_method: 'post',
+    add_or_update: 'Add Track'} %>

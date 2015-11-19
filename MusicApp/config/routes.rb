@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     resources :tracks, only: [:index]
   end
 
-  resources :tracks, only: [:show, :new, :create, :destroy]
+  resources :tracks, only: [:show, :new, :create, :edit, :update, :destroy]
 end
