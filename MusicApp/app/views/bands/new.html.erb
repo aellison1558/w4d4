@@ -1,0 +1,7 @@
+<h1>Add a new Band</h1>
+
+<%= render partial: "form",
+  locals: {
+    current_action: bands_url,
+    current_method: 'post',
+    add_or_update: 'Add Band'} %>

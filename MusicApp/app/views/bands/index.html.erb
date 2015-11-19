@@ -1,0 +1,19 @@
+<h1>Bands</h1>
+
+<%= link_to "Add Band", new_band_url %>
+
+<p>
+  <table>
+    <tr>
+      <th>Band</th>
+
+    </tr>
+    <% @bands.each do |band| %>
+      <tr>
+        <td><%= link_to "#{band.name}", band_url(band) %></td>
+        <td><%= link_to "albums", albums_url(band) %></td>
+      </tr>
+
+    <% end %>
+  </table>
+</p>
