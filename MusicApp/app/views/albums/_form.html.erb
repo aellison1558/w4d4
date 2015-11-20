@@ -4,13 +4,16 @@
   <%= auth_token %>
 
   <p>
-    <label>Album Name:</label>
-    <input type="string" name='album[name]' value=<%= @album.name %>>
+    <label for='album_name'>Album Name:</label>
+    <input type="string"
+           name='album[name]'
+           value=<%= @album.name %>
+           id='album_name'>
   </p>
 
   <p>
-    <label>Band:</label>
-    <select name='album[band_id]' %>>
+    <label for='band_id'>Band:</label>
+    <select name='album[band_id]' %> id='band_id'>
       <% Band.all.each do |band| %>
         <option
           value=<%= band.id %>
@@ -21,13 +24,19 @@
   </p>
 
   <p>
-    <label>Recording Type</label>
+    <label for='recording_type'>Recording Type</label>
     <br>
     <label>Studio:</label>
-    <input type="radio" name='album[recording_type]' value='studio' checked>
+    <input type="radio"
+           name='album[recording_type]'
+           value='studio' checked
+           id='recording_type'>
     <br>
     <label>Live:</label>
-    <input type="radio" name='album[recording_type]' value='live'>
+    <input type="radio"
+           name='album[recording_type]'
+           value='live'
+           id='recording_type'>
   </p>
 
   <p>

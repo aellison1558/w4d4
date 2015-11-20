@@ -4,6 +4,7 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.user_id = current_user.id
     @track = @note.track
+
     if @note.save
       redirect_to track_url(@track)
     else
@@ -14,12 +15,13 @@ class NotesController < ApplicationController
 
   def destroy
     @note = Note.find(params[:id])
+
     if @note && @note.user_id == current_user.id
       @track = @note.track
       @note.destroy
       redirect_to track_url(@track)
     else
-      render text: "403 FORBIDDEN"
+      render text: "403 FORBIDDEN", status: 403
     end
 
   end

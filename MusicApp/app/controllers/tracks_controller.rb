@@ -8,7 +8,6 @@ class TracksController < ApplicationController
     @track = Track.find(params[:id])
     @album = @track.album
     @notes = @track.notes
-    @note = Note.new
   end
 
   def new
@@ -17,6 +16,7 @@ class TracksController < ApplicationController
 
   def create
     @track = Track.new(track_params)
+
     if @track.save
       redirect_to track_url(@track)
     else
@@ -30,6 +30,7 @@ class TracksController < ApplicationController
 
   def update
     @track = Track.find(params[:id])
+
     if @track.update(track_params)
       redirect_to track_url(@track)
     else
@@ -39,9 +40,8 @@ class TracksController < ApplicationController
 
   def destroy
     @track = Track.find(params[:id])
-    @album = @track.album
     @track.destroy if @track
-    redirect_to album_tracks_url(@album)
+    redirect_to album_url(@track.album)
   end
 
   private

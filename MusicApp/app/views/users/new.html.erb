@@ -2,9 +2,13 @@
 
 <form action='<%= users_url %>' method='post'>
   <%= auth_token %>
-  <label>Email address:</label>
+
+  <label for='user_email'>Email address:</label>
   <p>
-    <input type="string" name="user[email]" value="<%= @user.email %>">
+    <input type="string"
+           name="user[email]"
+           value="<%= @user.email %>"
+           id='user_email'>
   </p>
 
   <label>Password:</label>

@@ -1,10 +1,12 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login
+  
   def new
   end
 
   def create
     @user = User.find_by_credentials(email, password)
+
     if @user
       login!(@user)
       redirect_to user_url(@user)

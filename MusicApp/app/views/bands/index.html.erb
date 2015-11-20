@@ -2,19 +2,7 @@
 <h3><%= link_to "Go to Albums", albums_url %></h3>
 <h3><%= link_to "Go to Tracks", tracks_url %></h3>
 
-
 <p>
-  <table>
-    <tr>
-      <th>Band</th>
-
-    </tr>
-    <% @bands.each do |band| %>
-      <tr>
-        <td><%= link_to "#{band.name}", band_url(band) %></td>
-      </tr>
-
-    <% end %>
-  </table>
+  <%= render @bands %>
   <%= link_to "Add Band", new_band_url %>
 </p>

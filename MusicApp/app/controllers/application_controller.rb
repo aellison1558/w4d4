@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :require_login, except: [:index]
+  # before_action :require_admin, except: [:index, :show]
 
   helper_method :current_user, :logged_in?
 
@@ -31,4 +32,12 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to root_url unless logged_in? && activated?
   end
+
+  # def admin?
+  #   current_user.admin if current_user
+  # end
+  #
+  # def require_admin
+  #   redirect_to root_url unless admin?
+  # end
 end

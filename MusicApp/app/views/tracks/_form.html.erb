@@ -5,13 +5,16 @@
   <%= auth_token %>
 
   <p>
-    <label>Track Name:</label>
-    <input type="string" name='track[name]' value=<%= @track.name %>>
+    <label for='track_name'>Track Name:</label>
+    <input type="string"
+           name='track[name]'
+           value=<%= @track.name %>
+           id='track_name'>
   </p>
 
   <p>
-    <label>Album:</label>
-    <select name='track[album_id]' %>>
+    <label for='album_id'>Album:</label>
+    <select name='track[album_id]' %> id='album_id'>
       <% Album.all.each do |album| %>
         <option
           value=<%= album.id %>
@@ -22,19 +25,27 @@
   </p>
 
   <p>
-    <label>Track Type</label>
+    <label for='track_type'>Track Type</label>
     <br>
     <label>Studio:</label>
-    <input type="radio" name='track[track_type]' value='regular' <%= "checked" if @track.track_type == 'regular' %>>
+    <input type="radio"
+           name='track[track_type]'
+           value='regular'
+           <%= "checked" if @track.track_type == 'regular' %>
+           id='track_type'>
     <br>
     <label>Live:</label>
-    <input type="radio" name='track[track_type]' value='bonus' <%= "checked" if @track.track_type == 'bonus' %>>
+    <input type="radio"
+           name='track[track_type]'
+           value='bonus'
+           <%= "checked" if @track.track_type == 'bonus' %>
+           id='track_type'>
   </p>
 
   <p>
-    <label>Lyrics:</label>
+    <label for='lyrics'>Lyrics:</label>
     <br>
-    <textarea name='track[lyrics]'><%=@track.lyrics %></textarea>
+    <textarea name='track[lyrics]' id='lyrics'><%=@track.lyrics %></textarea>
   </p>
 
   <p>
