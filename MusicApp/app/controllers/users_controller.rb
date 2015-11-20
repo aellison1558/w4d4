@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     if @user.save
       login!(@user)
       redirect_to user_url(@user)
-      message = Activation.activation_email(@user, activate_url(@user))
+      activation_url = activate_users_url + "?activation_token=#{@user.activation_token}"
+      message = Activation.activation_email(@user, activation_url)
       message.deliver_now
     else
       render :new
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def activate
-    @user = User.find(params[:id])
+    @user = User.find_by(activation_token: params[:activation_token])
     @user.toggle(:activate)
     @user.save
     redirect_to root_url

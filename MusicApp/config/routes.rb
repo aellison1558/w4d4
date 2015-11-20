@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root to: 'bands#index'
 
-  resources :users
-  get '/users/:id/activate', to: 'users#activate', as: 'activate'
+  resources :users do
+    get 'activate', on: :collection
+  end
   resource :session, only: [:new, :create, :destroy]
 
   resources :bands do

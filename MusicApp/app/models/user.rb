@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   validates :email, :password_digest, :session_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
-  after_initialize :ensure_session_token!
+  after_initialize :ensure_session_token!, :ensure_activation_token!
 
   has_many :notes
 
@@ -49,5 +49,12 @@ class User < ActiveRecord::Base
     self.session_token ||= User.generate_session_token
   end
 
+  def self.generate_activation_token
+    SecureRandom.urlsafe_base64(18)
+  end
+
+  def ensure_activation_token!
+    self.activation_token ||= User.generate_activation_token
+  end
 
 end
