@@ -11,6 +11,7 @@
   <%= button_to "Log out", session_url, action: 'delete', method: :delete %>
 <% else %>
   <%= link_to "Log In", new_session_url %>
+  <%= link_to "Register", new_user_url %>
 <% end %>
 <%= yield %>
 

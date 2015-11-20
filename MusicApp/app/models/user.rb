@@ -11,15 +11,22 @@
 #
 
 class User < ActiveRecord::Base
+  attr_reader :password
+
   validates :email, :password_digest, :session_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   after_initialize :ensure_session_token!
-  attr_reader :password
 
   has_many :notes
 
-  def self.generate_session_token
-    SecureRandom.base64
+  def reset_session_token!
+    token = self.session_token = User.generate_session_token
+    self.save
+    token
+  end
+
+  def password=(password)
+    self.password_digest = BCrypt::Password.create(password)
   end
 
   def self.find_by_credentials(email, password)
@@ -28,23 +35,18 @@ class User < ActiveRecord::Base
     user.is_password?(password) ? user : nil
   end
 
-  def reset_session_token!
-    token = self.session_token = User.generate_session_token
-    self.save
-    token
+  def is_password?(given_password)
+    my_password = BCrypt::Password.new(self.password_digest)
+    my_password.is_password?(given_password)
+  end
+
+  private
+  def self.generate_session_token
+    SecureRandom.base64
   end
 
   def ensure_session_token!
     self.session_token ||= User.generate_session_token
-  end
-
-  def password=(password)
-    self.password_digest = BCrypt::Password.create(password)
-  end
-
-  def is_password?(given_password)
-    my_password = BCrypt::Password.new(self.password_digest)
-    my_password.is_password?(given_password)
   end
 
 
